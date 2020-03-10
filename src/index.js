@@ -72,7 +72,7 @@ function OfflineTable(props) {
   }
 
   function filterData(e) {
-    const filterText = e.target.value
+    const filterText = e.target.value;
 
     var filtered = [];
 
@@ -87,14 +87,15 @@ function OfflineTable(props) {
           switch (headerFields[j].type) {
             case "media":
 
-              if (col.topText.toLowerCase().includes(filterText) || col.bottomText.toLowerCase().includes(filterText)) {
+              if (col.topText.toLowerCase().includes(filterText.toLowerCase()) ||
+                col.bottomText.toLowerCase().includes(filterText.toLowerCase())) {
                 filtered.push(row);
               }
 
               break;
             case "text":
 
-              if (String(col).toLowerCase().includes(filterText)) {
+              if (String(col).toLowerCase().includes(filterText.toLowerCase())) {
                 filtered.push(row);
               }
 
@@ -102,7 +103,7 @@ function OfflineTable(props) {
 
             case "badge":
 
-              if (col.data.toLowerCase().includes(filterText)) {
+              if (col.data.toLowerCase().includes(filterText.toLowerCase())) {
                 filtered.push(row);
               }
 
@@ -181,7 +182,6 @@ function OfflineTable(props) {
       }
     }
 
-
     function sortFunctionMediaDescending(a, b) {
       if (a[colIndex].topText === b[colIndex].topText) {
         return 0;
@@ -249,9 +249,7 @@ function OfflineTable(props) {
         </th >
       )
     }
-    headerFields.forEach(element => {
-      //console.log(element.name, ('sort' in element) ? element.sort : null);
-    });
+
     header.push(headerFields.map((row, idx) =>
       <th role="row"
         key={idx}
@@ -446,7 +444,6 @@ function OfflineTable(props) {
       )
     }
   }
-
 
   var showHeaderText =
     props.headerText ? <div className="card-body">
