@@ -73,6 +73,7 @@ function OfflineTable(props) {
 
   function filterData(e) {
     const filterText = e.target.value;
+    const filterTextToCompare = filterText.toLowerCase();
 
     var filtered = [];
 
@@ -87,15 +88,15 @@ function OfflineTable(props) {
           switch (headerFields[j].type) {
             case "media":
 
-              if (col.topText.toLowerCase().includes(filterText.toLowerCase()) ||
-                col.bottomText.toLowerCase().includes(filterText.toLowerCase())) {
+              if (col.topText.toLowerCase().includes(filterTextToCompare) ||
+                col.bottomText.toLowerCase().includes(filterTextToCompare)) {
                 filtered.push(row);
               }
 
               break;
             case "text":
 
-              if (String(col).toLowerCase().includes(filterText.toLowerCase())) {
+              if (String(col).toLowerCase().includes(filterTextToCompare)) {
                 filtered.push(row);
               }
 
@@ -103,7 +104,7 @@ function OfflineTable(props) {
 
             case "badge":
 
-              if (col.data.toLowerCase().includes(filterText.toLowerCase())) {
+              if (col.data.toLowerCase().includes(filterTextToCompare)) {
                 filtered.push(row);
               }
 
